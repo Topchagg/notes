@@ -1,8 +1,8 @@
 class BaseNote():
     def __init__(self,title,text,id):
-        self.__id = id
-        self.__title = title
-        self.__text = text
+        self._id = id
+        self._title = title
+        self._text = text
 
     def getInfo(self):
         return f"ID: {self.__id}\nTitle: {self.__title}\nText: {self.__text}"
@@ -13,4 +13,7 @@ class BaseNote():
                 setattr(self, f"_{self.__class__.__name__}__{key}", value)  
 
     def getId(self):
-        return self.__id                      
+        return self.__id  
+
+    def getDictionary(self):
+        return vars(self)             
