@@ -1,31 +1,29 @@
 class NoteManager():
     def __init__(self):
-        self.__notes = []
+        self._notes = []
         
-    def __findNoteIndex(self,id):
-        for i in range(len(self.__notes)):
-            if(self.__notes[id].getId() == id):
-                self.__notes.pop(i)
+    def _findNoteIndex(self,id):
+        for i in range(len(self._notes)):
+            if(self._notes[id].getId() == id):
+                self._notes.pop(i)
                 return i
         return False
 
     def getAllNotes(self):
-        return self.__notes
+        return self._notes
 
     def getNoteById(self,id):
-        neededNoteIndex = self.__findNoteIndex(id)
-        return self.__notes[neededNoteIndex]
+        neededNoteIndex = self._findNoteIndex(id)
+        return self._notes[neededNoteIndex]
     
     def addNote(self,note):
 
-        neededNoteIndex = self.__findNoteIndex(note.getId())
-
-        if neededNoteIndex():
+        if self._findNoteIndex(note.getId()):
             print("This ID is already taken")
             return False 
         
         try:
-            self.__notes.append(note)
+            self._notes.append(note)
             return True
         
         except Exception as e:
@@ -33,19 +31,19 @@ class NoteManager():
             return False
     
     def DeleteNote(self,id):
-        neededNoteIndex = self.__findNoteIndex(id)
+        neededNoteIndex = self._findNoteIndex(id)
 
         if(not neededNoteIndex):
             return False
         
-        self.__notes.pop[neededNoteIndex]
+        self._notes.pop[neededNoteIndex]
         return True
         
     def UpdateNote(self,id,**kwargs):
-        neededNoteIndex = self.__findNoteIndex(id)
+        neededNoteIndex = self._findNoteIndex(id)
 
         if (not neededNoteIndex):
             return False
         
-        self.__notes[neededNoteIndex].updateNote(kwargs)
+        self._notes[neededNoteIndex].updateNote(kwargs)
         return True
