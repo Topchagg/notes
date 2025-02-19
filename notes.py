@@ -5,7 +5,7 @@ class BaseNote():
         self._text = text
 
     def getInfo(self):
-        return f"ID: {self.__id}\nTitle: {self.__title}\nText: {self.__text}"
+        return f"ID: {self._id}\nTitle: {self._title}\nText: {self._text}"
         
     def updateNote(self, **kwargs):
         for key, value in kwargs.items():
@@ -13,7 +13,12 @@ class BaseNote():
                 setattr(self, f"_{self.__class__.__name__}__{key}", value)  
 
     def getId(self):
-        return self.__id  
+        return self._id  
 
     def getDictionary(self):
-        return vars(self)             
+        newDict = {}
+        
+        for key, value in vars(self):
+            newDict[key.lstrip('_')] = value
+
+        return newDict
